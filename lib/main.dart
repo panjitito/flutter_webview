@@ -3,13 +3,12 @@
 // Join My Discord Server to ask question: https://discord.gg/95w942N6Ts
 // Follow me on Twitter: https://twitter.com/techwithsam_
 
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'homepage.dart';
+import 'webview/example2.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,20 +18,24 @@ Future<void> main() async {
   }
   await FlutterDownloader.initialize(
       debug: false); // set true to enable printing logs to console
-  await Permission.storage.request(); // ask for storage permission on app create
+  await Permission.storage
+      .request(); // ask for storage permission on app create
 
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  String _url = "https://benerinmotor.com/mobile/public/login";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TechWithSam - Flutter Webview Tutorial',
+      title: 'BENERIN Motor',
       theme: ThemeData(
           primarySwatch: Colors.blue, visualDensity: VisualDensity.standard),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: WebExampleTwo(url: _url),
+      //home: HomePage(),
     );
   }
 }

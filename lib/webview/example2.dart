@@ -19,8 +19,6 @@ class _WebExampleTwoState extends State<WebExampleTwo> {
   String url = '';
 
   final GlobalKey webViewKey = GlobalKey();
-  // Future<Directory?>? _externalDocumentsDirectory =
-  //     getExternalStorageDirectory();
 
   InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
       crossPlatform: InAppWebViewOptions(
@@ -65,17 +63,6 @@ class _WebExampleTwoState extends State<WebExampleTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text("Tect With Sam"),
-      //   centerTitle: true,
-      //   elevation: 0,
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () => _webViewController?.reload(),
-      //       icon: Icon(Icons.refresh),
-      //     ),
-      //   ],
-      // ),
       body: SafeArea(
         child: Container(
           child: Column(
@@ -94,7 +81,7 @@ class _WebExampleTwoState extends State<WebExampleTwo> {
                   initialUrlRequest: URLRequest(
                     url: Uri.parse(widget.url),
                     headers: {},
-                  ), // "https://unsplash.com/photos/odxB5oIG_iA"
+                  ),
                   initialOptions: options,
                   pullToRefreshController: pullToRefreshController,
                   onDownloadStart: (controller, url) async {
@@ -154,31 +141,6 @@ class _WebExampleTwoState extends State<WebExampleTwo> {
                     print(consoleMessage);
                   },
                 ),
-              ),
-              ButtonBar(
-                buttonAlignedDropdown: true,
-                buttonPadding: EdgeInsets.all(2),
-                alignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  ElevatedButton(
-                    child: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      _webViewController?.goBack();
-                    },
-                  ),
-                  ElevatedButton(
-                    child: Icon(Icons.arrow_forward),
-                    onPressed: () {
-                      _webViewController?.goForward();
-                    },
-                  ),
-                  ElevatedButton(
-                    child: Icon(Icons.refresh),
-                    onPressed: () {
-                      _webViewController?.reload();
-                    },
-                  ),
-                ],
               ),
             ],
           ),
